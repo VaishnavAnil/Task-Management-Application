@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
 }
 
+/* Header */
 h1 {
   font-size: 2.5rem;
   margin: 20px 0;
@@ -21,15 +22,17 @@ h1 {
 /* Task Controls */
 .task-controls {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 15px;
   margin: 20px 0;
+  padding: 0 20px;
 }
 
 input[type="text"],
 input[type="date"] {
+  width: 100%;
+  max-width: 400px;
   padding: 10px 15px;
   border: none;
   border-radius: 8px;
@@ -57,16 +60,6 @@ button {
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-  transform: scale(0.95);
-  box-shadow: none;
-}
-
 /* Tasks Container */
 #tasks {
   margin: 20px auto;
@@ -77,7 +70,6 @@ button:active {
   gap: 15px;
 }
 
-/* Task Item */
 .task {
   display: flex;
   justify-content: space-between;
@@ -90,37 +82,203 @@ button:active {
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.task:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+/* Responsiveness with Media Queries */
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .task-controls {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .task-controls input,
+  .task-controls button {
+    width: 100%;
+    max-width: none;
+  }
+
+  #tasks {
+    width: 100%;
+    max-width: none;
+    padding: 0 10px;
+  }
+
+  .task {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
-.task.completed {
-  background-color: #d9fdd3;
-  text-decoration: line-through;
-  color: #5a5a5a;
-}
+/* For Mobile Devices (portrait) */
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
 
-.task span {
+  .task-controls {
+    padding: 0;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  #tasks {
+    padding: 0;
+  }
+
+  .task {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+/* General Styling */
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+  color: #f5f5f5;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  min-height: 100vh;
 }
 
-.task input[type="checkbox"] {
-  transform: scale(1.2);
+/* Header */
+h1 {
+  font-size: 2.5rem;
+  margin: 20px 0;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Task Controls */
+.task-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #333;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(to right, #43cea2, #185a9d);
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.task button {
-  padding: 5px 15px;
-  font-size: 0.9rem;
-  background: linear-gradient(to right, #ff512f, #dd2476);
-  border-radius: 6px;
+/* Tasks Container */
+#tasks {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Drag and Drop Styles */
-.task.dragover {
-  border: 2px dashed #007bff;
-  background-color: #e9f7ff;
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #333;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Responsiveness with Media Queries */
+@media only screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .task-controls {
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .task-controls input,
+  .task-controls button {
+    width: 100%;
+    max-width: none;
+  }
+
+  #tasks {
+    width: 100%;
+    max-width: none;
+    padding: 0 10px;
+  }
+
+  .task {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* For Mobile Devices (portrait) */
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .task-controls {
+    padding: 0;
+  }
+
+  input[type="text"],
+  input[type="date"] {
+    font-size: 0.9rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  #tasks {
+    padding: 0;
+  }
+
+  .task {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
 }
